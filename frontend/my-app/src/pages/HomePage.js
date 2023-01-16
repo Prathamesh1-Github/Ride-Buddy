@@ -4,21 +4,24 @@ import Navbar from "../components/Navbar"
 import "../styles/HomePage.css"
 import FirstImage from "../images/carpollingimage1.webp"
 import FeaturesImage1 from "../images/homepage2.jpg"
-import FeaturesImage2 from "../images/registrationimage.jpg"
+import FeaturesImage2 from "../images/registrationimageBgrm.png"
 import FeaturesImage3 from "../images/asset3.svg"
 import {NavLink} from "react-router-dom"
+
+import Fade from "react-reveal/Fade"
 
 
 
 const HomePage = () => {
     return (
         <div className="body_Homepage">
-                <div className="top-banner">
+                {/* <div className="top-banner">
                     <div className="container">
                         <div className="small-bold-text banner-text">New to Ride Sharing: Share and Save Money using Ride</div>
                     </div>
-                </div>
+                </div> */}
                 <Navbar className="HomepageNavbar"/>
+                <Fade bottom distance="10%" duration={1500}>
                 <header>
                     <div className="container">
                         <div className="container header-section flex">
@@ -33,13 +36,15 @@ const HomePage = () => {
                         </div>
                     </div>
                 </header>
+                </Fade>
                 <section className="features-section">
                     <div className="container">
                         <div className="features-header">
                             <h2>Have a Great Ride with a RideBuddy</h2>
-                            <NavLink className="secondary-button2" to="/features">See all features</NavLink>
+                            {/* <NavLink className="secondary-button2" to="/features">See all features</NavLink> */}
                         </div>
                         <div className="features-area flex">
+                            <Fade bottom distance="10%" duration={1500}>
                             <div className="features-card flex">
                                 <h3>In Control</h3>
                                 <p>Verified members mean your know exactly who you're travelling with</p>
@@ -64,9 +69,12 @@ const HomePage = () => {
                                 <h3>Safe & Friendly</h3>
                                 <p>You will have a very Safe and Friendly ride</p>
                             </div>
+                            </Fade>
                         </div>
                     </div>
+                    
                 </section>
+                <Fade bottom distance="10%" duration={1500}>
                 <section className="big-features-section">
                     <div className="container flex big-feature-container">
                         <div className="feature-image">
@@ -79,6 +87,8 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
+                </Fade>
+                <Fade bottom distance="10%" duration={1500}>
                 <section className="big-features-section">
                     <div className="container flex big-feature-container">
                         <div className="features-desc flex">
@@ -91,7 +101,9 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
+                </Fade>
                 <section className="cta-section flex">
+                <Fade bottom distance="10%" duration={1500}>
                     <div className="container cta-section-image">
                         <img src={FeaturesImage3} alt=""></img>
                     </div>
@@ -100,6 +112,7 @@ const HomePage = () => {
                         <p>Let's make this your least expensive journey ever.</p>
                         <NavLink href="/register" className="primary-button-homepage">Offer a Ride</NavLink>
                     </div>
+                </Fade>
                 </section>
         </div>
     )

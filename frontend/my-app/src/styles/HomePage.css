@@ -105,13 +105,14 @@ header{
 
 .features-section{
     padding: 80px var(--padding-inline-section) 0;
-    background-image: url(../images/assest40.svg);
+    /* background-image: url(../images/assest40.svg); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40%;
 }
 .features-header{
     text-align: center;
+    margin-bottom: 60px;
 }
 .features-header h2{
     margin-bottom: 20px;
