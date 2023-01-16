@@ -3,7 +3,19 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, NotFoundError} = require('../errors')
 
 const getAllWorldRides = async (req, res) => {
-    const rides = await Ride.find().sort('createdAt')
+    const {startLocation, destination, date} = req.query
+    const queryObject = {}
+    if(startLocation){
+        queryObject.startLocation = { $regex: startLocation, $options: 'i'}
+    }
+    if(destination){
+        queryObject.destination = { $regex: destination, $options: 'i'}
+    }
+    if(date){
+        queryObject.date = { $regex: date, $options: 'i'}
+    }
+    let rides = await Ride.find(queryObject).sort({createdAt:-1})
+    // const rides = await Ride.find().sort({createdAt:-1})
     res.status(StatusCodes.OK).json(rides)
 }
 
@@ -36,12 +48,12 @@ const createRide = async (req, res) => {
 
 const updateRide = async (req, res) => {
     const {
-        body: {startLocation, destination, data, time, car, carNumber, createdBy},
+        body: {startLocation, destination, date, time, car, carNumber, createdBy},
         user: {userId},
         params: {id:rideId}
     } = req
 
-    if(startLocation==='' || destination==='' || data==='' || time==='' || car==='' || carNumber==='' || createdBy){
+    if(startLocation==='' || destination==='' || date==='' || time==='' || car==='' || carNumber==='' || createdBy){
         throw new BadRequestError('Provide all the fields')
     }
 
