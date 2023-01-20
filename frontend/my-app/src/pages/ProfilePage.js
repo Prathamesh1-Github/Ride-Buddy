@@ -4,13 +4,13 @@ import axios from "axios"
 import MainNavbar from "../components/MainNavbar"
 
 const ProfilePage = () => {
-    const [profileInfo, setProfileInfo] = useState({})
+    const [profileInfo, setProfileInfo] = useState([])
     const [isError, setIsError] = useState('')
 
     const getProfileInfo = async () => {
         try{
             const res = await axios.get(
-                "http://locahost:3000/api/v1/profile",
+                "http://localhost:3000/api/v1/profile",
                 {
                     headers:{
                         "Authorization": "Bearer " + localStorage.getItem('token')
@@ -34,8 +34,8 @@ const ProfilePage = () => {
     return (
         <div className="mainPage">
             <MainNavbar/>
-            <h1>{profileInfo.name}</h1>
-            <p>{profileInfo.sex}</p>
+            <h1>{profileInfo[0].name}</h1>
+            <p>{profileInfo[0].sex}</p>
         </div>
     )
 }
