@@ -19,7 +19,8 @@ const authenticateUser = require('./middleware/authentication')
 const authRouter = require('./routes/auth')
 const ridesRouter = require('./routes/rides')
 const profileRouter = require('./routes/profile')
-
+const chatRouter = require('./routes/chatRoutes')
+const messageRouter = require('./routes/messageRoutes')
 
 
 // error handler
@@ -37,6 +38,8 @@ app.use(cors(corsOptions))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/rides', authenticateUser, ridesRouter)
 app.use('/api/v1', authenticateUser, profileRouter)
+app.use('/api/v1/chat', authenticateUser, chatRouter)
+app.use('/api/v1/message', authenticateUser, messageRouter)
 
 
 app.use(notFoundMiddleware);
